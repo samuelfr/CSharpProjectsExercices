@@ -16,7 +16,7 @@ namespace nurl
 		{		
 			var command = new Command(args);
 			var result = command.parse();
-			Assert.AreEqual(result, expected);
+			Assert.AreEqual(result, expected, "Erreur testParse");
 		}
 		
 		
