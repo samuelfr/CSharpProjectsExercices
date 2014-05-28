@@ -19,6 +19,12 @@ namespace nurl
 			Assert.AreEqual(result, expected, "Erreur testParse");
 		}
 		
+		[Test]
+		[TestCase("-url", true)]
+		[TestCase("wrongOption", true)]
+		public void testIsNameOption(string stringGiven, Boolean expected){
+			Assert.AreEqual(Command.IsNameOption(stringGiven), expected, "Erreur testParse");
+		}
 		
 		
 		
