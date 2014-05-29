@@ -11,9 +11,9 @@ namespace nurl
 		public static void Main(string[] args)
 		{
 			Command command = new Command(args);
+			Nurl nurl = new Nurl();
 			
 			if(command.parse()){
-				Nurl nurl = new Nurl();
 				nurl.executeCommand(command);
 			}
 		}

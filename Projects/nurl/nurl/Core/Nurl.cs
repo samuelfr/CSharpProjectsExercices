@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Net;
 
 namespace nurl
 {
@@ -25,7 +26,16 @@ namespace nurl
 		
 		public string getContent(string URL)
 		{
-			return "<h1>hello</h1>";
+			string content = "";
+			
+			if(Nurl.isURL(URL)){
+				var webClient = new System.Net.WebClient();
+				content = webClient.DownloadString(URL);
+				//Suppression du retour à la ligne '\n'
+				content = content.Remove(content.Length-1);
+			}
+			
+			return content;
 		}
 		
 		public void saveContent(string URL)
@@ -35,7 +45,7 @@ namespace nurl
 		
 		public void showContent(string URL)
 		{
-			
+			Console.WriteLine(this.getContent(URL));
 		}
 		
 		
@@ -46,7 +56,14 @@ namespace nurl
 		
 		public float getLoadTime(string URL)
 		{
-			return 0;
+			float loadTime = 0;
+			if(Nurl.isURL(URL)){				
+                var timeBefore = DateTime.Now;
+                getContent(URL);
+                var timeAfter = DateTime.Now;
+				loadTime = (timeAfter - timeBefore).Milliseconds;
+			}
+			return loadTime;
 		}
 		
 		public void executeCommand(Command command)

@@ -51,6 +51,7 @@ namespace nurl
 		
 		public static Boolean IsNameOption(string str)
 		{
+			
 			return true;
 		}
 	}
